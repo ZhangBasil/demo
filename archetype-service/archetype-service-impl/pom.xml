@@ -12,6 +12,10 @@
 
     <artifactId>archetype-service-impl</artifactId>
 
+    <properties>
+        <start-class>com.zhangbin.archetype.application.ArchetypeServiceApplication</start-class>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>com.zhangbin.archetype</groupId>
