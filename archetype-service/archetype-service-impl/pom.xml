@@ -12,10 +12,6 @@
 
     <artifactId>archetype-service-impl</artifactId>
 
-    <properties>
-        <start-class>com.zhangbin.archetype.application.ArchetypeServiceApplication</start-class>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>com.zhangbin.archetype</groupId>
@@ -27,12 +23,6 @@
             <groupId>com.zhangbin.base</groupId>
             <artifactId>zhangbin-base-service</artifactId>
             <version>0.0.1-SNAPSHOT</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.springframework</groupId>
-                    <artifactId>spring</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
 
         <dependency>
@@ -52,21 +42,11 @@
         </dependency>
     </dependencies>
 
-
     <build>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>1.5.8.RELEASE</version>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-deploy-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-install-plugin</artifactId>
             </plugin>
         </plugins>
     </build>
