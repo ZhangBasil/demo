@@ -1,6 +1,7 @@
 package com.zhangbin.archetype.service.share;
 
 import com.zhangbin.archetype.service.share.dto.user.UserDTO;
+import com.zhangbin.base.share.dto.page.PageDTO;
 import com.zhangbin.base.share.dto.response.ResponseDTO;
 
 /**
@@ -16,4 +17,6 @@ public interface UserService {
     ResponseDTO<UserDTO> queryById(Long id);
 
     ResponseDTO<UserDTO> queryByIdThrowException(Long id);
+
+    ResponseDTO<PageDTO<UserDTO>> queryByPage();
 }

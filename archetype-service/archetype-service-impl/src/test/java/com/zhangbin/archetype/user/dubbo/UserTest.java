@@ -2,6 +2,10 @@ package com.zhangbin.archetype.user.dubbo;
 
 import javax.annotation.Resource;
 
+import com.github.pagehelper.PageInfo;
+import com.zhangbin.archetype.biz.dal.user.UserDO;
+import com.zhangbin.base.biz.util.ConverterUtils;
+import com.zhangbin.base.share.dto.page.PageDTO;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -11,6 +15,9 @@ import com.zhangbin.archetype.application.ArchetypeServiceApplication;
 import com.zhangbin.archetype.service.share.UserService;
 import com.zhangbin.archetype.service.share.dto.user.UserDTO;
 import com.zhangbin.base.share.dto.response.ResponseDTO;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author zhangbin
@@ -38,5 +45,11 @@ public class UserTest {
         userDTO.setMobile("12321312312312321");
         ResponseDTO<Boolean> responseDTO = userService.insert(userDTO);
         System.out.println("responseDTO = " + responseDTO);
+    }
+
+    @Test
+    public void queryByPage() {
+        ResponseDTO<PageDTO<UserDTO>> pageDTOResponseDTO = userService.queryByPage();
+        System.out.println("pageDTOResponseDTO = " + pageDTOResponseDTO);
     }
 }

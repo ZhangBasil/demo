@@ -23,10 +23,6 @@
             <artifactId>archetype-biz-dal</artifactId>
             <version>${project.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot</artifactId>
-        </dependency>
     </dependencies>
 
     
