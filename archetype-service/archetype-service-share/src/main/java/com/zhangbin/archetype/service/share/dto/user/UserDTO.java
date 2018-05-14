@@ -8,6 +8,8 @@ import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Map;
@@ -33,5 +35,9 @@ public class UserDTO implements Serializable {
     @NotBlank(message = "性别不能为空")
     @Length(min = 1, max = 2, message = "性别有误")
     String userSex;
+
+//    @NotNull
+//    @Valid
+    OtherDTO otherDTO;
 
 }

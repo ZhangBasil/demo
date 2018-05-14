@@ -16,13 +16,11 @@
         <dependency>
             <groupId>com.zhangbin.archetype</groupId>
             <artifactId>archetype-biz-core</artifactId>
-            <version>${project.version}</version>
         </dependency>
 
         <dependency>
             <groupId>com.zhangbin.base</groupId>
             <artifactId>zhangbin-base-service</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
         </dependency>
 
         <dependency>
@@ -36,9 +34,8 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>io.dubbo.springboot</groupId>
-            <artifactId>spring-boot-starter-dubbo</artifactId>
-            <version>1.0.0</version>
+            <groupId>com.alibaba.spring.boot</groupId>
+            <artifactId>dubbo-spring-boot-starter</artifactId>
         </dependency>
     </dependencies>
 

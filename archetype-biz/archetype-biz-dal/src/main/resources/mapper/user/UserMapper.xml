@@ -3,7 +3,7 @@
 <mapper namespace="com.zhangbin.archetype.biz.dal.user.UserMapper">
 
 
-    <resultMap id="user_result" type="UserDO" extends="common.base.mapper.base_result">
+    <resultMap id="UserResultMap" type="UserDO" extends="com.zhangbin.archetype.biz.dal.common.BaseDO.BaseResultMap">
         <result property="userName" column="user_name"/>
         <result property="userPwd" column="user_pwd"/>
         <result property="userSex" column="user_sex"/>
@@ -14,6 +14,7 @@
         user_name,
         user_pwd,
         user_sex,
+        user_age,
         is_deleted,
         gmt_created,
         gmt_modified
@@ -22,37 +23,46 @@
 
     <insert id="insert" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO t_user (
-          user_name,
-          user_pwd,
-          user_sex,
-          gmt_created,
-          gmt_modified
+        user_name,
+        user_pwd,
+        user_sex,
+        user_age,
+        gmt_created,
+        gmt_modified
         ) VALUES (
-          #{userName},
-          #{userPwd},
-          #{userSex},
-          now(),
-          now()
+        #{userName},
+        #{userPwd},
+        #{userSex},
+        #{userAge},
+        now(),
+        now()
         )
     </insert>
 
     <update id="logicDelete">
-        UPDATE t_user SET gmt_modified = now() AND is_deleted = 1
+        UPDATE t_user SET gmt_modified = now(), is_deleted = 1
         WHERE id = #{id}
     </update>
 
-    <select id="queryById" resultMap="user_result">
+    <update id="update" parameterType="UserDO">
+        update t_user set gmt_modified = now(), user_pwd = #{userPwd}, user_age = #{userAge}
+        where id = #{id}
+    </update>
+
+    <select id="queryById" resultMap="UserResultMap">
         SELECT
         <include refid="query_all_column"/>
         FROM t_user WHERE id = #{id}
     </select>
 
-    <select id="query" resultMap="user_result">
+
+    <select id="query" resultMap="UserResultMap">
         SELECT
         <include refid="query_all_column"/>
         FROM t_user
         <include refid="query_condition"/>
     </select>
+
 
     <sql id="query_condition">
         <where>

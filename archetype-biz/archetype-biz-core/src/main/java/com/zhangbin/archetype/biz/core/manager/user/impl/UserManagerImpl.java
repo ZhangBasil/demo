@@ -8,6 +8,7 @@ import com.zhangbin.archetype.biz.core.manager.user.UserManager;
 import com.zhangbin.archetype.biz.dal.user.UserDO;
 import com.zhangbin.base.biz.exception.BizException;
 import com.zhangbin.base.biz.manager.BaseManagerImpl;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @author zhangbin
@@ -27,4 +28,27 @@ public class UserManagerImpl extends BaseManagerImpl implements UserManager {
         }
         return null;
     }
+
+    @Override
+    @Transactional
+    public void update(UserDO userDO) {
+        super.update(userDO);
+        if (userDO.getId() == 20) {
+            throw new RuntimeException("事物异常............");
+        }
+    }
+
+    @Override
+    @Transactional
+    public boolean transactionTest(UserDO userDO) {
+        try {
+            this.insert(userDO);
+            throw new RuntimeException("异常。。。。。。。。。");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+
 }

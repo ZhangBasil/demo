@@ -19,6 +19,49 @@
         <!--<module>archetype-web</module>-->
     </modules>
 
+    <properties>
+        <archetype-service-share.version>0.0.1-SNAPSHOT</archetype-service-share.version>
+        <zhangbin-base.version>0.0.1-SNAPSHOT</zhangbin-base.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <!--对外提供的rpc版本-->
+            <dependency>
+                <groupId>com.zhangbin.archetype</groupId>
+                <artifactId>archetype-service-share</artifactId>
+                <version>${archetype-service-share.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.zhangbin.archetype</groupId>
+                <artifactId>archetype-biz-core</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.zhangbin.archetype</groupId>
+                <artifactId>archetype-biz-dal</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.zhangbin.base</groupId>
+                <artifactId>zhangbin-base-share</artifactId>
+                <version>${zhangbin-base.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.zhangbin.base</groupId>
+                <artifactId>zhangbin-base-biz</artifactId>
+                <version>${zhangbin-base.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.zhangbin.base</groupId>
+                <artifactId>zhangbin-base-service</artifactId>
+                <version>${zhangbin-base.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
     <dependencies>
         <dependency>
             <groupId>org.projectlombok</groupId>

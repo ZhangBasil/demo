@@ -1,5 +1,6 @@
 package com.zhangbin.archetype.service.impl.user;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -15,6 +16,8 @@ import com.zhangbin.base.biz.util.ConverterUtils;
 import com.zhangbin.base.share.dto.page.PageDTO;
 import com.zhangbin.base.share.dto.response.ResponseDTO;
 import com.zhangbin.base.share.util.ResponseUtils;
+import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @author zhangbin
@@ -23,6 +26,7 @@ import com.zhangbin.base.share.util.ResponseUtils;
  * @date 2017-11-30
  * @Version V1.0
  */
+@Component
 @Service(interfaceClass = UserService.class)
 public class UserServiceImpl implements UserService {
     @Resource
@@ -31,7 +35,8 @@ public class UserServiceImpl implements UserService {
     @Override
     public ResponseDTO<Boolean> insert(UserDTO userDTO) {
         System.out.println("userDTO = " + userDTO);
-        userManager.insert(new UserDO());
+        UserDO userDO = ConverterUtils.convertBean(userDTO, UserDO.class);
+        userManager.insert(userDO);
         return ResponseUtils.success(Boolean.TRUE);
     }
 
@@ -58,4 +63,27 @@ public class UserServiceImpl implements UserService {
         List<UserDTO> list = ConverterUtils.convertBeans(userManager.query(pageQuery), UserDTO.class);
         return ResponseUtils.success(list);
     }
+
+    @Override
+    public ResponseDTO<Boolean> test(String mobile) {
+        System.out.println("mobile = " + mobile);
+        return ResponseUtils.success();
+    }
+
+    @Override
+    @Transactional
+    public ResponseDTO<Boolean> updatePwd(Long id, String pwd) {
+        System.out.println("pwd = " + pwd);
+        UserDO user = userManager.queryById(id);
+        String userPwd = user.getUserPwd();
+        if (userPwd.equals("zhangbin")) {
+            UserDO userDO = new UserDO();
+            userDO.setId(id);
+            userDO.setUserPwd(pwd);
+            System.out.println(" =========== " + pwd + " ============= " + new Date().getTime());
+            userManager.update(userDO);
+        }
+        return ResponseUtils.success(Boolean.TRUE);
+    }
+
 }

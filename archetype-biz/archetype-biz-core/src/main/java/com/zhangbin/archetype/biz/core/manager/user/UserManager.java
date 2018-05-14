@@ -14,4 +14,8 @@ public interface UserManager extends BaseManager {
 
     UserDO queryByIdThrowException(Long id);
 
+    boolean transactionTest(UserDO userDO);
+
+    void update(UserDO userDO);
+
 }
