@@ -2,8 +2,7 @@ package com.zhangbin.archetype.application;
 
 import com.alibaba.dubbo.config.spring.context.annotation.EnableDubbo;
 import com.alibaba.dubbo.config.spring.context.annotation.EnableDubboConfig;
-import com.alibaba.dubbo.spring.boot.annotation.EnableDubboConfiguration;
-import com.zhangbin.base.service.aop.annotation.EnableAspect;
+import com.alibaba.dubbo.config.spring.context.annotation.EnableDubboConfigBinding;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -24,7 +23,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableTransactionManagement
 //@EnableAspect
 //@EnableDubbo
-//@EnableDubboConfiguration
 //@EnableConfigurationProperties
 //@EnableDubboConfig
 public class ArchetypeServiceApplication {

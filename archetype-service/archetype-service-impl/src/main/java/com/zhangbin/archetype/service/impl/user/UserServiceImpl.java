@@ -27,7 +27,8 @@ import org.springframework.transaction.annotation.Transactional;
  * @Version V1.0
  */
 @Component
-@Service(interfaceClass = UserService.class)
+//@Service(interfaceClass = UserService.class)
+@Service
 public class UserServiceImpl implements UserService {
     @Resource
     private UserManager userManager;
@@ -86,4 +87,8 @@ public class UserServiceImpl implements UserService {
         return ResponseUtils.success(Boolean.TRUE);
     }
 
+    @Override
+    public ResponseDTO<String> sayHello(String say) {
+        return ResponseUtils.success("你好！" + say);
+    }
 }

@@ -2,13 +2,13 @@ package com.zhangbin.archetype.service.share;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 import com.zhangbin.archetype.service.share.dto.user.UserDTO;
 import com.zhangbin.base.share.constrain.Mobile;
 import com.zhangbin.base.share.dto.page.PageDTO;
 import com.zhangbin.base.share.dto.response.ResponseDTO;
-import org.hibernate.validator.constraints.NotBlank;
 
 /**
  * @author zhangbin
@@ -30,5 +30,7 @@ public interface UserService {
     ResponseDTO<Boolean> test(@Mobile String mobile);
 
     ResponseDTO<Boolean> updatePwd(@NotNull Long id, @NotBlank String pwd);
+
+    ResponseDTO<String> sayHello(String say);
 
 }
